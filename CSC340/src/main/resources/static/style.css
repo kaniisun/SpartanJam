@@ -16,9 +16,9 @@ body {
 }
 
 /*Logo adjustment*/
-.logo {
-    background-image: url('/templates.listener/Spartan.png');
-}
+/* .logo {
+    background-image: url('../Spartan.png');
+} */
 
 .logo {
     position: fixed;
