@@ -1,0 +1,101 @@
+/*Wording adjustment and styling*/
+.main {
+    color: antiquewhite;
+}
+
+h1 {
+    margin-top: -200px;
+    align-items: center;
+    font-size: 40px;
+}
+
+p {
+    align-items: center;
+    font-size: 20px;
+    color: antiquewhite;
+}
+
+/*Option style editing*/
+.option ul li {
+    list-style: none;
+    background: rgb(33, 19, 64);
+    color: rgb(19, 11, 36);
+    margin: 5px;
+    font-size: 30px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.option a {
+    text-decoration: none;
+    color: white;
+}
+
+.option ul {
+    background: rgb(19, 11, 36);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.under {
+    background-color: rgb(19, 11, 36);
+    border: 20px;
+    border-radius: 10px;
+    padding: 30px;
+
+}
+
+.under h2 {
+    color: antiquewhite;
+    border: 20px;
+    font-size: 40px;
+}
+
+.under ul{
+    padding: 5px;
+    background: rgb(33, 19, 64);
+    border-radius: 10px;
+}
+
+.under ul li {
+    display: block;
+    list-style: none;
+    color: antiquewhite;
+    position: flex;
+
+}
+
+.under ul li i {
+    display: inline-block;
+    position: absolute;
+    right: 48%;
+    font-size: 20px;
+}
+
+i {
+    padding: 5px;
+}
+
+.bx-x {
+    margin-top: -0.3%;
+    cursor: pointer;
+    left: 45%;
+}
+
+.bx-check {
+    margin-top: -0.3%;
+    cursor: pointer;
+    left: 44%;
+
+}
+
+.usersearch .bx-search {
+    top: 348px;
+    right: 660px;
+}
+
+.bx-edit{
+    margin-top: -0.3%;
+    cursor: pointer;
+}
+
