@@ -1,0 +1,147 @@
+.grid-container {
+   display: grid;
+   grid-template-columns: auto auto 200px auto auto auto;
+   position: fixed;
+   top: 50px;
+   padding-left: 690px;
+}
+
+.grid-item1 {
+   grid-row-start: 1;
+   grid-row-end: 3;
+}
+
+.grid-item2 {
+   grid-row-start: 1;
+   grid-row-end: 3;
+   padding-left: 10px;
+}
+
+/* Style the search field */
+div div input[type=text] {
+   width: 300px;
+   height: 50px;
+   padding: 10px;
+   font-size: 17px;
+   border: 1px solid rgb(240, 219, 219);
+   background: #f1f1f1;
+}
+
+/* Style the submit button */
+div div button {
+   width: 80px;
+   height: 50px;
+   padding: 10px;
+   background: rgb(255, 183, 27);
+   color: white;
+   font-size: 17px;
+   border: 1px solid grey;
+   border-left: none;
+   /* Prevent double borders */
+   cursor: pointer;
+}
+
+div div button:hover {
+   background: rgb(196, 160, 83);
+}
+
+div div img {
+   border-radius: 60%;
+}
+
+.library-box {
+   position: fixed;
+   top: 190px;
+   left: -10px;
+   width: 350px;
+   height: 100%;
+   border-right: 5px solid rgb(19, 11, 36);
+   border-top: 5px solid rgb(19, 11, 36);
+   background-color: rgb(33, 19, 64);
+   border-radius: 10px;
+}
+
+.library-form {
+   position: fixed;
+   left: 30px;
+   top: 200px;
+   color: white;
+
+}
+
+.library-form u {
+   color: rgb(255, 183, 27);
+   transition: 0.03s;
+}
+
+/** added for scrollar*/
+
+
+.artists-form {
+   position: relative;
+   left: 125px;
+   top: 100px;
+   color: white;
+}
+
+.artists-form h1 {
+   color: rgb(255, 183, 27);
+}
+
+.playlists-form {
+   position: relative;
+   left: 125px;
+   top: 100px;
+   color: white;
+}
+
+.playlists-form h1 {
+   color: rgb(255, 183, 27);
+}
+
+ul {
+   list-style-type: none;
+}
+
+.box-background {
+   background-color: rgb(20, 195, 195);
+}
+
+.box {
+   width: 350px;
+   border:  5px solid rgb(19, 11, 36);
+   padding: 20px;
+   margin: 10px;
+   background-color:rgb(33, 19, 64);
+   border-radius: 10px;
+}
+.grid-container3 {
+   display: grid;
+   grid-template-columns: auto auto;
+   padding: 10px;
+}
+.grid-item3 {
+   background-color:rgb(33, 19, 64);
+   border: 1px solid rgb(19, 11, 36);
+   padding: 10px;
+   font-size: 15px;
+   text-align:left;
+   cursor: pointer;
+ }
+/* Style the submit button */
+div ol div button {
+   width: 60%;
+   height: 60%;
+   padding: 10px;
+   background: rgb(14, 39, 70);
+   color: white;
+   font-size: 11px;
+   border: 1px solid grey;
+   /* Prevent double borders */
+   cursor: pointer;
+}
+
+div ol div button:hover {
+   background: rgb(173, 167, 207);
+}
+
