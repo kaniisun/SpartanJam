@@ -120,3 +120,9 @@ body {
     text-decoration: none;
     color: black;
 }
+
+.bg {
+    background-color: rgb(255, 183, 27);
+    border-radius: 10px;
+    padding: 40px;
+}
