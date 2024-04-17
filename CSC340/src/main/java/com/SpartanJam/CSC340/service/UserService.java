@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.SpartanJam.CSC340.model.User;
 import com.SpartanJam.CSC340.repository.UserRepository;
+import java.util.Optional;
 
 /**
  *
@@ -51,4 +52,17 @@ public class UserService {
                 -> new UsernameNotFoundException(username + "not found"));
        return user.getRole();
     }
+    
+        public List<User> getAllUsers() {
+        return (List<User>) repo.findAll();
+    }
+        
+    public User get(Integer id) {
+        Optional<User> result = repo.findById(id);
+        return result.get();
+    }   
+    
+    public void save(User user) {
+        repo.save(user);
+    }    
 }

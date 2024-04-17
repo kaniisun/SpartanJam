@@ -31,6 +31,11 @@ public class Admin {
     
     @Column(length = 45, nullable = false, name = "user_name")
     private String username;
+
+    public Admin(Integer id, String username) {
+        this.id = id;
+        this.username = username;
+    }
     
     public Integer getID() {
         return id;
