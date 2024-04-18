@@ -24,4 +24,6 @@ public class AdminService {
     public List<Admin> listAll() {
         return (List<Admin>) repo.findAll();
     }
+    
+    
 }

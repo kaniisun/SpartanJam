@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import org.springframework.ui.Model;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -94,6 +95,20 @@ public String adminPage(Model model) {
     userService.save(user);
         return "redirect:/admin/edit";
 }    
+    
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Integer id) {
+        userService.delete(id);
+        return "redirect:/admin/edit";
+    }
+    
+    @GetMapping("/search")
+    public String getProducts(Model model, @Param("keyword") String keyword) {
+        model.addAttribute("listUsers",
+                userService.getAllProducts(keyword));
+        model.addAttribute("keyword", keyword);
+        return "admin/editUsers";
+    }
 
 }
 

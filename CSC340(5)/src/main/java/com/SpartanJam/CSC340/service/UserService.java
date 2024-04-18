@@ -65,4 +65,15 @@ public class UserService {
     public void save(User user) {
         repo.save(user);
     }    
+    
+    public void delete(Integer id) {
+        repo.deleteById(id);
+    }
+    
+    public List<User> getAllProducts(String keyword) {
+        if (keyword != null) {
+            return repo.search(keyword);
+        }
+        return repo.findAll();
+    }
 }

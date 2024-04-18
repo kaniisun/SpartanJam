@@ -99,6 +99,11 @@ i {
     cursor: pointer;
 }
 
+.bx-checkbox-minus {
+    margin-top: -0.3%;
+    cursor: pointer;
+}
+
 .table {
     color: white;
 
