@@ -32,7 +32,7 @@ public class ListenerService {
 			listener2 = listenerRepository.findListernerByUsernameAndSongName(listener.getUsername(), listener.getSongName())
 					.orElseThrow(() -> new UsernameNotFoundException("User not found"));
 		}catch(Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 			
 		if(listener2 == null) {
@@ -42,5 +42,16 @@ public class ListenerService {
 	
 	public void removeFavSong(int id) {
 		listenerRepository.deleteById(String.valueOf(id));
+	}
+	
+	public Listener getListenerById(int id) {
+		Listener listener = listenerRepository.findById(String.valueOf(id))
+				.orElseThrow(() -> new UsernameNotFoundException("Listener not found for id: " + id));
+		
+		return listener;
+	}
+	
+	public void updateListenerRating(Listener listener) {
+		listenerRepository.save(listener);
 	}
 }

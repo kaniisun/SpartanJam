@@ -6,6 +6,7 @@ package com.SpartanJam.CSC340.model;
 
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -33,12 +34,13 @@ public class Listener {
 	private String artistName;
     @NotNull
 	private String spotifyUrl;
+    private Character rating;
     
     public Listener() {
 	}
-    
+
 	public Listener(int id, @NotNull String username, @NotNull String songName, @NotNull String albumName,
-			@NotNull String artistName, @NotNull String spotifyUrl) {
+			@NotNull String artistName, @NotNull String spotifyUrl, Character rating) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -46,6 +48,7 @@ public class Listener {
 		this.albumName = albumName;
 		this.artistName = artistName;
 		this.spotifyUrl = spotifyUrl;
+		this.rating = rating;
 	}
 
 	public int getId() {
@@ -94,6 +97,14 @@ public class Listener {
 
 	public void setSpotifyUrl(String spotifyUrl) {
 		this.spotifyUrl = spotifyUrl;
+	}
+
+	public Character getRating() {
+		return rating;
+	}
+
+	public void setRating(Character rating) {
+		this.rating = rating;
 	}
 
 	@Override

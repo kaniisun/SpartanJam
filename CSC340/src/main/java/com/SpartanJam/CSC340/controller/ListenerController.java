@@ -54,7 +54,6 @@ public class ListenerController {
 		System.out.println("Library page");
         String name = SecurityContextHolder.getContext().getAuthentication().getName();
         List<Listener> listeners = listenerService.getAllListenersByUsername(name);
-        System.out.println("id: " + listeners.toString());
         model.addAttribute("listeners",listeners);
         
 		return "listener/favorites";
@@ -68,8 +67,27 @@ public class ListenerController {
 		return "redirect:/listener/favorites";
 	}
 	
+	@GetMapping("/increaseRating/listenerId={id}")
+	public String increaseRating(@PathVariable int id) {
+		System.out.println("Increase rating for id = " + id);
+        Listener listener = listenerService.getListenerById(id);
+        listener.setRating('P');
+        listenerService.updateListenerRating(listener);
+		return "redirect:/listener/favorites";
+	}
+	
+	@GetMapping("/decreaseRating/listenerId={id}")
+	public String decreaseRating(@PathVariable int id) {
+		System.out.println("Decrease rating for id = " + id);
+        Listener listener = listenerService.getListenerById(id);
+        listener.setRating('N');
+        listenerService.updateListenerRating(listener);
+		return "redirect:/listener/favorites";
+	}
+	
 	@GetMapping("/deleteFavSong/listenerId={id}")
 	public String deleteFavSong(@PathVariable int id) {
+		System.out.println("Delete favorite song with id = " + id);
 		listenerService.removeFavSong(id);
 		return "redirect:/listener/favorites";
 	}
