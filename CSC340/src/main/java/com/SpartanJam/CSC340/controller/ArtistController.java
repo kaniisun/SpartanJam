@@ -16,11 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/artist")
 public class ArtistController {
     
-//    @GetMapping("/artistlogin")
-//    public String listenerLogin() {
-//        
-//        return "artistlogin";
-//    }
+    @GetMapping("/home")
+    public String forumLogin(){
+        return "artist/artist";
+    }
 //    
 //    @GetMapping("/artistpage")
 //    public String artistPage() {
