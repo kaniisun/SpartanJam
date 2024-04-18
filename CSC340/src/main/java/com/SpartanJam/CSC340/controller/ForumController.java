@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/forum")
 public class ForumController {
     
-//    @GetMapping("/forumlogin")
-//    public String forumLogin(){
-//        return "forumlogin";
-//    }
+    @GetMapping("/home")
+    public String forumLogin(){
+        return "forum/forum";
+    }
 //    
 //    @GetMapping("/forumpage")
 //    public String adminPage() {

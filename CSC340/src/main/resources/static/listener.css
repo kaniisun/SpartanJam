@@ -50,14 +50,14 @@ div div img {
 }
 
 .library-box {
-   position: fixed;
-   top: 190px;
+   position: relative;
+   top-padding: 30%;
    left: -10px;
-   width: 350px;
-   height: 100%;
+   width: 60%;
+   height: 50%;
    border-right: 5px solid rgb(19, 11, 36);
    border-top: 5px solid rgb(19, 11, 36);
-   background-color: rgb(33, 19, 64);
+   background-color: white;
    border-radius: 10px;
 }
 
@@ -78,24 +78,14 @@ div div img {
 
 
 .artists-form {
-   position: relative;
-   left: 125px;
-   top: 100px;
+   position: fixed;
+   right: 30px;
+   top: 180px;
+   left: 600px;
    color: white;
 }
 
 .artists-form h1 {
-   color: rgb(255, 183, 27);
-}
-
-.playlists-form {
-   position: relative;
-   left: 125px;
-   top: 100px;
-   color: white;
-}
-
-.playlists-form h1 {
    color: rgb(255, 183, 27);
 }
 
@@ -108,6 +98,7 @@ ul {
 }
 
 .box {
+   position: relative;
    width: 350px;
    border:  5px solid rgb(19, 11, 36);
    padding: 20px;
@@ -118,13 +109,17 @@ ul {
 .grid-container3 {
    display: grid;
    grid-template-columns: auto auto;
-   padding: 10px;
+/*    padding: 10px; */
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   width: 90%;
 }
 .grid-item3 {
    background-color:rgb(33, 19, 64);
    border: 1px solid rgb(19, 11, 36);
    padding: 10px;
-   font-size: 15px;
+   font-size: 14px;
    text-align:left;
    cursor: pointer;
  }
@@ -144,4 +139,3 @@ div ol div button {
 div ol div button:hover {
    background: rgb(173, 167, 207);
 }
-

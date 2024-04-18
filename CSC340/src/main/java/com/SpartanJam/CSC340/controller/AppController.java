@@ -35,7 +35,7 @@ public class AppController {
         		nextPage = "admin/admin";
         		break;
         	case "LISTENER":
-        		nextPage = "listener/listener";
+        		nextPage = "redirect:listener/home";
         		break;
         	case "ARTIST":
         		nextPage = "artist/artist";
