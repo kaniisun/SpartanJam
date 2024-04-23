@@ -38,7 +38,7 @@ public class AppController {
         		nextPage = "listener/listener";
         		break;
         	case "ARTIST":
-        		nextPage = "artist/artist";
+        		nextPage = "artist";
         		break;
         	case "FORUM":
         		nextPage = "forum/forum";

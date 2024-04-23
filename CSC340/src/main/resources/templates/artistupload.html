@@ -1,45 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-		<link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'>  
-		<!-- Load icon library -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-		<title>SpartanJam | Edit</title>
-		<link rel="stylesheet" href="../artist.css">
-		<link rel="stylesheet" href="../artiststyle.css">
-	</head>
-
-
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+        <!-- CSS libraries -->
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'>  
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+        <!-- Page Title -->
+        <title>SpartanJam | Upload</title>
+    
+        <!-- Internal CSS styles -->
+        <link rel="stylesheet" href="../artist.css">
+        <link rel="stylesheet" href="../artiststyle.css">
+        <link rel="stylesheet" href="../artistuploadstyle.css">
+    </head>
     <body>
-    <header>
-		<div class="titleheader">
-			<h1>Upload your music!<h1>
-		</div>
-		<div class="searchbar">
-			<input type="text" placeholder="Search" class="search">
-			<a href="#"><i class='bx bx-search'></i></a>
-		</div>
-		<div class="logo-container">
-			<a href="artistpage"><img src="../Spartan.png" class="logo"></a>
-		</div>
-	</header>
+        <header>
+        <!-- Header Title -->
+            <div class="titleheader">
+                <h1>Upload your music!<h1>
+            </div>
+    
+        <!-- Search Bar -->
+            <div class="searchbar">
+                <input type="text" placeholder="Search" class="search">
+                <a href="#"><i class='bx bx-search'></i></a>
+            </div>
+    
+        <!-- Logo Container -->
+            <div class="logo-container">
+                <a href="/home"><img src="../Spartan.png" class="logo"></a>
+            </div>
+        </header>
 
-    <div class="grid-container">
-        <div class="grid-item1">
-            <img src="profileicon1.png" width="50px" height="50px">
+        <div class="grid-container">
+            <!-- Grid Items -->
+            <div class="grid-item1">
+                <img src="../profileicon1.png" width="50px" height="50px">
+            </div>
+            <div class="grid-item2">
+                <a href="forum">Forum</a>
+            </div>
+            <div class="grid-item3">
+                <a href="artistupload">Upload</a>
+            </div>
         </div>
-        <div class="grid-item2">
-            <a href="forum">Forum</a>
-        </div>
-		<div class="grid-item3">
-            <a href="artistupload">Upload</a>
-        </div>
-    </div>
 
-	<div class="main-box">
-	</div>
-</body>
+        <div class="main-box">
+            <!-- Upload Form -->
+            <form action="/home" method="post" enctype="multipart/form-data">
+                <label for="title">Title:</label><br>
+                <input type="text" id="title" name="title"><br><br>
+        
+                <label for="audio">Select Audio File (MP3):</label><br>
+                <input type="file" id="audio" name="audio" onchange="updateFilePath()"><br><br>
+        
+                <!-- Prompt for Description -->
+                <label for="description">Description:</label><br>
+                <textarea id="description" name="description"></textarea><br><br>
+        
+                <!-- Submit Button to process into database -->
+                <input type="submit" value="Upload Song">
+            </form>
+        </div>
+    </body>
 </html>
