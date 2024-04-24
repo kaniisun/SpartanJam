@@ -7,8 +7,10 @@ package com.SpartanJam.CSC340.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.SpartanJam.CSC340.model.Admin;
+import com.SpartanJam.CSC340.model.ArtistSong;
 import com.SpartanJam.CSC340.model.User;
 import com.SpartanJam.CSC340.service.AdminService;
+import com.SpartanJam.CSC340.service.ArtistService;
 import com.SpartanJam.CSC340.service.UserService;
 import java.util.ArrayList;
 import org.springframework.ui.Model;
@@ -34,6 +36,9 @@ public class AdminController {
     @Autowired
     UserService userService;
 
+    @Autowired
+    ArtistService artistService;
+    
   /*@GetMapping("/adminlogin")
     public String adminLogin() {
 
@@ -49,7 +54,10 @@ public class AdminController {
 }*/
     
     @GetMapping("/approve")
-    public String approve() {
+    public String approve(Model model) {
+        List<ArtistSong> artistSongs = artistService.listAll();
+
+        model.addAttribute("artistSongs", artistSongs);        
         return "admin/approve";
     }
 
@@ -92,7 +100,7 @@ public class AdminController {
 
     // search for user
     @GetMapping("/search")
-    public String getProducts(Model model, @Param("key") String key) {
+    public String getUsers(Model model, @Param("key") String key) {
         model.addAttribute("listUsers", userService.getAllUsers(key));
         model.addAttribute("key", key);
         return "admin/editUsers";
@@ -104,6 +112,12 @@ public class AdminController {
         User user = userService.get(id);
         model.addAttribute("user", user);
         return "admin/adminDetails";
+    }
+    
+    @GetMapping("/deny/{id}")
+    public String deny(@PathVariable("id") Long id) {
+        artistService.delete(id);
+        return "redirect:/admin/approve";
     }
 
 }
