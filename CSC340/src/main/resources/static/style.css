@@ -16,9 +16,9 @@ body {
 }
 
 /*Logo adjustment*/
-.logo {
-    background-image: url('/templates.listener/Spartan.png');
-}
+/* .logo {
+    background-image: url('../Spartan.png');
+} */
 
 .logo {
     position: fixed;
@@ -119,4 +119,35 @@ body {
 .bttn a{
     text-decoration: none;
     color: black;
+}
+
+.bg {
+    background-color: rgb(255, 183, 27);
+    border-radius: 10px;
+    padding: 40px;
+}
+
+
+.topright {
+  position: absolute;
+  top: 50px;
+  right: 30px;
+  background-color: rgb(15, 32, 68);
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+		
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
 }
