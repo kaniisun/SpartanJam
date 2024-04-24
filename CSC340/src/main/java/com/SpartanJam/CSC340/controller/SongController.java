@@ -2,87 +2,82 @@ package com.SpartanJam.CSC340.controller;
 
 import com.SpartanJam.CSC340.model.Song;
 import com.SpartanJam.CSC340.repository.SongRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.UUID;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
-import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-
-/**
- * @author Sebastian Del Campo
- * CSC 340 - SpartanJam Artist Use Case: SongController
- * 
- * CRUD Application that will gather information input from artistupload.html,
- * all data will be saved in spartan_db under the song table
- * @since April 17, 2024
- */
 
 @Controller
-public class SongController 
-{
-    //Private data
+public class SongController {
+
     @Autowired
     private SongRepository songRepository;
 
     @Value("${upload.path}")
     private String uploadPath;
 
-    //Main function for processing music upload
+    // Maximum file size limit in bytes (1GB)
+    private static final long MAX_FILE_SIZE_LIMIT = 1073741824;
+
     @PostMapping("/home")
-    public String submitSong(@RequestParam("title") String title, @RequestParam("description") String description, @RequestParam("audio") MultipartFile audioFile, Authentication authentication) 
-    {
-        try 
-        {
+    public String submitSong(@RequestParam("title") String title, 
+                             @RequestParam("description") String description, 
+                             @RequestParam("audio") MultipartFile audioFile, 
+                             Authentication authentication) {
+
+        try {
             String uploaderUsername = authentication.getName();
-            if (audioFile.isEmpty()) 
-            {
+            if (audioFile.isEmpty()) {
                 return "redirect:/home"; // Handle empty audio file
             }
 
-            String fileName = UUID.randomUUID().toString() + "-" + audioFile.getOriginalFilename();
-            
-            // Fixing file path to replace spaces with underscores
-            String sanitizedFileName = fileName.replaceAll("\\s+", "_");
-            String filePath = uploadPath + File.separator + sanitizedFileName;
+            // Check if the file size exceeds the maximum limit
+            if (audioFile.getSize() > MAX_FILE_SIZE_LIMIT) {
+                // Handle file size exceeded error
+                return "redirect:/home";
+            }
 
-            // Ensure directory exists to ensure file is there
+            String fileName = UUID.randomUUID().toString() + "-" + audioFile.getOriginalFilename();
+            String sanitizedFileName = fileName.replaceAll("\\s+", "_");
+
+            // Construct the audio file path
+            String audioFilePath = "/audio/" + sanitizedFileName;
+
+            // Ensure directory exists
             Path uploadDir = Paths.get(uploadPath);
-            if (!Files.exists(uploadDir)) 
-            {
+            if (!Files.exists(uploadDir)) {
                 Files.createDirectories(uploadDir);
             }
 
-            //Grabs the file of from where it was uploaded and then implemented into the audio folder
+            // Save the file to the upload directory
             Path destination = uploadDir.resolve(sanitizedFileName);
             Files.write(destination, audioFile.getBytes());
-            
-            
-            // Creates Song Dataset to store
+
+            // Create Song object and set attributes
             Song song = new Song();
             song.setTitle(title);
             song.setDescription(description);
-            song.setAudioFilePath(filePath);
+            song.setAudioFilePath(audioFilePath);
             song.setUploaderUsername(uploaderUsername);
             song.setApproved(false);
 
-            //Save song data to the database
+            // Save the song to the database
             songRepository.save(song); 
 
-            //Redirect to the homepage after successful upload
+            // Redirect to the homepage after successful upload
             return "redirect:/home"; 
-        } 
-        catch (IOException e) //Redirect to error page if an exception occurs
-        {
+        } catch (IOException e) {
             e.printStackTrace();
-            return "redirect:/home"; 
+            return "redirect:/home"; // Redirect to error page if an exception occurs
         }
     }
 }

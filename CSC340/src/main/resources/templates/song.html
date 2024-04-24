@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SpartanJam | [[${song.title}]]</title>
+    <!-- CSS libraries -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'>  
+    <link rel="stylesheet" href="../artist.css">
+    <link rel="stylesheet" href="../artiststyle.css">
+    <link rel="stylesheet" href="../artistuploadstyle.css">
+</head>
+<body>
+<header>
+    <!-- Profile Icon -->
+    <div class="logo-container">
+        <a href="/home"><img src="../Spartan.png" class="logo"></a>
+    </div>
+    <!-- Search Bar -->
+    <div class="searchbar">
+        <input type="text" placeholder="Search" class="search">
+        <a href="#"><i class='bx bx-search'></i></a>
+    </div>
+</header>
+
+<div class="grid-container">
+    <!-- Grid Items -->
+    <div class="grid-item1">
+        <img src="../profileicon1.png" width="50px" height="50px">
+    </div>
+    <div class="grid-item2">
+        <a href="forum">Forum</a>
+    </div>
+    <div class="grid-item3">
+        <a href="/artist/artistupload">Upload</a>
+    </div>
+</div>
+
+<div class="container main-box">
+    <!-- Song Details -->
+    <h1 th:text="${song.title}" style="text-align: center; margin-top: 20px;"></h1>
+    <div class="song-details" th:text="${song.description}" style="text-align: center; margin-top: 20px;"></div>
+    <!-- Audio Player -->
+    <div style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
+    <audio controls class="audio-player">
+        <!-- Update the source attribute with the correct Thymeleaf URL syntax -->
+        <source th:src="@{'/audio/' + ${song.audioFilePath.substring(7)}}" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    </div>
+    <!-- Uploaded by -->
+    <div class="uploader" style="text-align: center;">Uploaded by: <span th:text="${song.uploaderUsername}"></span></div>
+</div>
+</body>
+</html>
