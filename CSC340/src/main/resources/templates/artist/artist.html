@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,32 +12,30 @@
     <link rel="stylesheet" href="../artist.css">
     <link rel="stylesheet" href="../artiststyle.css">
 </head>
-
 <body>
-        <!--Link logo to start page-->
-        <a href="startpagel"><img src="../Spartan.png" class="logo" alt="homepage"></a>
+    <!-- Link logo to start page -->
+    <a href="startpage"><img src="../Spartan.png" class="logo" alt="homepage"></a>
 
     <header>
-		<div class="titleheader">
-			<h1>Welcome User!<h1>
-		</div>
-		<div class="logo-container">
-            <a href="startpagel"><img src="../Spartan.png" class="logo" alt="homepage"></a>
-		</div>
-	</header>
+        <div class="titleheader">
+            <h1>Welcome User!</h1>
+        </div>
+        <div class="logo-container">
+            <a href="startpage"><img src="../Spartan.png" class="logo" alt="homepage"></a>
+        </div>
+    </header>
 
     <div class="grid-container">
         <div class="grid-item1">
             <img src="../profileicon1.png" width="50px" height="50px">
         </div>
-
-		<div class="grid-item3">
+        <div class="grid-item3">
             <a href="/artist/artistupload">Upload</a>
         </div>				
     </div>
 
-	<div class="main-box">
-	</div>
+    <div class="main-box">
+    </div>
 
     <div class="library-box">
         <form class="library-form">
@@ -76,9 +73,8 @@
                     <li>...</li>
                 </ol>
             </div>        
-		</li>
-        
-		<li class="playlists-form">
+        </li>
+        <li class="playlists-form">
             <div class="box">
                 <h1>Playlist</h1>
                 <ol>
@@ -93,27 +89,21 @@
             </div>
         </li>
     </ul>
-	
-	<div class="artist-box">
-		<form class="artist-form">
-			<h1>Your Music</h1>
-			<ol>
-                <li>Funky Grooves...<a href="artistedit">edit</a></li>
-                <li>Jazzy Nights...<a href="artistedit">edit</a></li>
-                <li>Disco Dance...<a href="artistedit">edit</a></li>
-                <li>Rockin Roll...<a href="artistedit">edit</a></li>
-                <li>...</li>
-            </ol>
-		</form>
-	</div>
-	
-	<div class="upload-box">
-		<form class="upload-form">
-			<h1><a href="/artist/artistupload">UPLOAD</a></h1>
-		</form>
-	</div>
-	
+    
+<div class="artist-box">
+    <form class="artist-form">
+        <h1>Your Music</h1>
+        <ol th:each="song : ${songs}">
+            <li th:text="${song.title}"></li>
+        </ol>
+    </form>
+</div>
+
+    
+    <div class="upload-box">
+        <form class="upload-form">
+            <h1><a href="/artist/artistupload">UPLOAD</a></h1>
+        </form>
+    </div>
 </body>
-
 </html>
-
