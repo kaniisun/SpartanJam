@@ -94,7 +94,10 @@
     <form class="artist-form">
         <h1>Your Music</h1>
         <ol th:each="song : ${songs}">
-            <li th:text="${song.title}"></li>
+            <li>
+                <a th:href="@{/artist/songedit/{id}(id=${song.id})">  <span th:text="${song.title}">Song Title</span>
+                </a>
+                ...Edit  </li>
         </ol>
     </form>
 </div>
