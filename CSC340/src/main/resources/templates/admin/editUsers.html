@@ -20,49 +20,32 @@
 </head>
 
 <body>
-    <div class="grid-container">
-        <div class="grid-item1">
-            <input type="text" placeholder="Search...">
-        </div>
-        <div class="grid-item1">
-            <button type="submit"><i class="fa fa-search"></i></button>
-        </div>
-        <div class="grid-item1">
-    
-        </div>
-        <div class="grid-item2">
-            <button type="submit"><a href="adminpage">Home</a></button>
-        </div>
-        <div class="grid-item1" style="align-items: right;">
-            <button type="submit"><a href="forum">Forum </a></button>
-        </div>
-        <div class="grid-item2">
-            <img src="profileicon1.png" width="50px" height="50px">
-        </div>
+    <!--Link logo to start page--> 
+    <a href="/"><img src="../Spartan.png" class="logo" alt="homepage"></a>
+        
+    <div class="topright">
+ 	    <div style="display: flex;">
+ 	    	<div class="dropdown">
+				  <img src="../profileicon1.png" width="50px" height="50px">
+				  <div class="dropdown-content">
+		            <form class="form-inline" th:action="@{/logout}" method="post">                
+		                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign Out</button>
+		            </form>
+				  </div>
+			</div>
+		</div>
     </div>
-
-    <!--Link logo to start page-->
-    <a href="start"><img src="../Spartan.png" class="logo" alt="homepage"></a>
 
     <!--Admin Edit users-->
     <div class="edit">
         <div class="under">
             <h2>Choose a User: </h2>
             <ul>
-                <li>
-                    <div class="usersearch">
-                        <table class="elements">
-                            <tr>
-                                <td>
-                                    <input type="text" placeholder="User Search..." class="search">
-                                </td>
-                                <td>
-                                    </a>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                </li>
+                <form th:action="@{/admin/search}">
+                    <input type="text" name="key" id="key" size="50" th:value="${key}" required />
+                    &nbsp;
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
                 <table class="table table-bordered">
                     <thead>
                         <tr>
@@ -78,6 +61,7 @@
                                 <td th:text="${user.userName}"></td>
                                 <td>
                                     <a th:href="@{/admin/editUser/{id}(id=${user.id})}"><i class='bx bx-edit'></i></a>
+                                    <a th:href="@{/admin/delete/{id}(id=${user.id})}"><i class='bx bx-checkbox-minus'></i></a>
                                 </td>
                             </tr>
                         </th:block> 
@@ -88,4 +72,4 @@
         </div>
     </div>
 </body>
-
+</html>

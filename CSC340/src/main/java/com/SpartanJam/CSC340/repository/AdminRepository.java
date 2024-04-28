@@ -16,3 +16,4 @@ import com.SpartanJam.CSC340.model.Admin;
 public interface AdminRepository extends CrudRepository<Admin, Integer> {
     
 }
+
