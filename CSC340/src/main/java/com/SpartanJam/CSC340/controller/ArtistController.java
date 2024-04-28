@@ -17,6 +17,12 @@ public class ArtistController {
 
     @Autowired
     private SongRepository songRepository;
+    
+    @GetMapping("/home")
+    public String home() {
+    	System.out.println("Artist home page");
+    	return "artist/artist";
+    }
 
     @GetMapping("/artistlogin")
     public String listenerLogin() {

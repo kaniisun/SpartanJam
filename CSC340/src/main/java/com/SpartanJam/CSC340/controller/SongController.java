@@ -46,7 +46,7 @@ public class SongController {
                 return "redirect:/home";
             }
 
-            String fileName = UUID.randomUUID().toString() + "-" + audioFile.getOriginalFilename();
+            String fileName = audioFile.getOriginalFilename();
             String sanitizedFileName = fileName.replaceAll("\\s+", "_");
 
             // Construct the audio file path
@@ -60,7 +60,9 @@ public class SongController {
 
             // Save the file to the upload directory
             Path destination = uploadDir.resolve(sanitizedFileName);
-            Files.write(destination, audioFile.getBytes());
+            if(!Files.exists(destination)) {
+            	Files.write(destination, audioFile.getBytes());
+            }
 
             // Create Song object and set attributes
             ArtistSong song = new ArtistSong();
