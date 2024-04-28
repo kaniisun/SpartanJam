@@ -20,20 +20,21 @@
 </head>
 
 <body>
-    <div class="grid-container">
-        <div class="grid-item1">
-    
-        </div>
-        <div class="grid-item2">
-            <button type="submit"><a href="/login/admin">Home</a></button>
-        </div>
-        <div class="grid-item2">
-            <img src="../profileicon1.png" width="50px" height="50px">
-        </div>
-    </div>
-
-    <!--Link logo to start page-->
-    <a href="/login/admin"><img src="../Spartan.png" class="logo" alt="homepage"></a>
+     <!--Link logo to start page--> 
+     <a href="/"><img src="../Spartan.png" class="logo" alt="homepage"></a>
+        
+     <div class="topright">
+ 	    <div style="display: flex;">
+ 	    	<div class="dropdown">
+				  <img src="../profileicon1.png" width="50px" height="50px">
+				  <div class="dropdown-content">
+		            <form class="form-inline" th:action="@{/logout}" method="post">                
+		                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign Out</button>
+		            </form>
+				  </div>
+			</div>
+		</div>
+	 </div>
 
     <!--Admin Edit users-->
     <div class="edit">
