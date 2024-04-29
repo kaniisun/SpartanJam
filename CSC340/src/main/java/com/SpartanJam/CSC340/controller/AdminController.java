@@ -21,6 +21,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -38,8 +39,8 @@ public class AdminController {
 
     @Autowired
     ArtistService artistService;
-    
-  /*@GetMapping("/adminlogin")
+
+    /*@GetMapping("/adminlogin")
     public String adminLogin() {
 
         return "adminlogin";
@@ -52,15 +53,6 @@ public class AdminController {
     
     return "admin/admin";
 }*/
-    
-    @GetMapping("/approve")
-    public String approve(Model model) {
-        List<ArtistSong> artistSongs = artistService.listAll();
-
-        model.addAttribute("artistSongs", artistSongs);        
-        return "admin/approve";
-    }
-
     @GetMapping("/edit")
     public String editUsers(Model model) {
         // get users
@@ -105,7 +97,21 @@ public class AdminController {
         model.addAttribute("key", key);
         return "admin/editUsers";
     }
-   
+
+    @GetMapping("/approve")
+    public String approve(Model model) {
+        List<ArtistSong> artistSongs = artistService.listAll();
+        model.addAttribute("artistSongs", artistSongs);
+        return "admin/approve";
+    }
+
+    @GetMapping("/songSearch")
+    public String getSongs(Model model, @Param("key") String key) {
+        model.addAttribute("artistSongs", userService.getAllUsers(key));
+        model.addAttribute("key", key);
+        return "admin/editUsers";
+    }
+
     // user details
     @GetMapping("/details/{id}")
     public String details(@PathVariable("id") Integer id, Model model) {
@@ -113,11 +119,26 @@ public class AdminController {
         model.addAttribute("user", user);
         return "admin/adminDetails";
     }
-    
-    @GetMapping("/deny/{id}")
+
+    /*    @GetMapping("/deny/{id}")
     public String deny(@PathVariable("id") Long id) {
         artistService.delete(id);
         return "redirect:/admin/approve";
+    }*/
+    @GetMapping("/approve/{id}")
+    public String approve(@PathVariable("id") Long id) {
+        ArtistSong song = artistService.get(id);
+        song.setApproved(true);
+        artistService.save(song);
+        return "redirect:/admin/approve";
     }
 
+    @GetMapping("/deny/{id}")
+    public String deny(@PathVariable("id") Long id, @RequestParam(value = "comment", required = false) String comment) {
+        ArtistSong song = artistService.get(id);
+        song.setApproved(false);
+        song.setDenial(comment);
+        artistService.save(song);
+        return "redirect:/admin/approve";
+    }
 }
