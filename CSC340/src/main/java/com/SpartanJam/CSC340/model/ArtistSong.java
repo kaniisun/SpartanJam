@@ -4,12 +4,11 @@ package com.SpartanJam.CSC340.model;
  *
  * @author sebas
  */
-
 import jakarta.persistence.*;
 
 @Entity
-public class ArtistSong 
-{
+public class ArtistSong {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,9 +18,10 @@ public class ArtistSong
     private String description;
     private String uploaderUsername;
     private boolean approved;
+    private String denied;
+    private String comment;
 
     // Getters and setters
-
     public long getId() {
         return id;
     }
@@ -69,5 +69,20 @@ public class ArtistSong
     public void setApproved(boolean approved) {
         this.approved = approved;
     }
+
+    public String getDenial() {
+        return denied;
+    }
+
+    public void setDenial(String denied) {
+        this.denied = denied;
+    }
     
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }    
 }

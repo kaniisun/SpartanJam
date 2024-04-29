@@ -52,7 +52,8 @@
                             <th>ID</th>
                             <th>Artist</th>
                             <th>Song</th>
-                            <th></th>
+                            <th>Actions</th>
+                            <th>Comments</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -66,6 +67,7 @@
                                     <a th:href="@{/admin/approve/{id}(id=${song.id})}"><i class='bx bx-check' ></i></a>
                                     <a th:href="@{/admin/deny/{id}(id=${song.id})}"><i class='bx bx-x' ></i></a>
                                 </td>
+                                <td><input type="text" name="comment" placeholder="Type here..."></td>
                             </tr>
                         </th:block> 
                     </tbody>
