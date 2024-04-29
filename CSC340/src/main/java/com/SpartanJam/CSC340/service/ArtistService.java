@@ -32,5 +32,21 @@ public class ArtistService {
     
     public void delete(Long id) {
         repo.deleteById(id);
-    }    
+    }   
+    
+    // search users
+    public List<ArtistSong> getSongs(String key) {
+        if (key != null) {
+            return repo.search(key);
+        }
+        return (List<ArtistSong>) repo.findAll();
+    }   
+    
+    // save user
+    public void save(ArtistSong song) {
+        repo.save(song);
+    }   
+    
+
+
 }
