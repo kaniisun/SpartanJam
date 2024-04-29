@@ -52,6 +52,7 @@ public class UserService {
     public String getUserRole(String username) {
         User user = repo.findByUserName(username).orElseThrow(()
                 -> new UsernameNotFoundException(username + "not found"));
+        System.out.println("User role: " + user.getRole());
         return user.getRole();
     }
 

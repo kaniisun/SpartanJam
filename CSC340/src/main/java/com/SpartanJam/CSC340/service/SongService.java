@@ -22,7 +22,7 @@ public class SongService {
 		List<ArtistSong> listOfSongs  = null;
 				
 		try {
-			listOfSongs = (List<ArtistSong>) songRepository.findAll();
+			listOfSongs = (List<ArtistSong>) songRepository.findByApproved(true);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

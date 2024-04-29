@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
- */
+
 package com.SpartanJam.CSC340.repository;
 
 /**
@@ -24,4 +21,6 @@ public interface SongRepository extends CrudRepository<ArtistSong, Long>
     public List<ArtistSong> search(String key);
 
     public Optional<ArtistSong> findById(Integer id);
+    
+    public List<ArtistSong> findByApproved(Boolean approved);
 }
