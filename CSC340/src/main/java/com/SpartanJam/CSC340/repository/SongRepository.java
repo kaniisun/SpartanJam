@@ -20,7 +20,7 @@ public interface SongRepository extends CrudRepository<ArtistSong, Long>
     @Query("SELECT a FROM User a WHERE CONCAT(a.userName) LIKE %?1%")
     public List<ArtistSong> search(String key);
 
-    public List<ArtistSong> findByUploaderUsername(String username);
-
     public Optional<ArtistSong> findById(Integer id);
+    
+    public List<ArtistSong> findByApproved(Boolean approved);
 }
