@@ -20,49 +20,68 @@ import java.util.Optional;
  */
 @Service
 public class UserService {
-    @Autowired 
+
+    @Autowired
     private UserRepository repo;
-    
+
     @Autowired
     PasswordEncoder passwordEncoder;
-    
+
     public List<User> listAll() {
         return (List<User>) repo.findAll();
     }
-    
+
     public boolean saveUser(User user) {
-    	//Check if username already exists in database
-    	for(User tempUser: this.listAll()) {
-    		if(tempUser.getUserName().equals(user.getUserName())) {
-    			System.out.println("Username: " + tempUser.getUserName() + " already exists in database.");
-    			return false;
-    		}
-    	}
-    	//Encrypt password before saving in database
+        //Check if username already exists in database
+        for (User tempUser : this.listAll()) {
+            if (tempUser.getUserName().equals(user.getUserName())) {
+                System.out.println("Username: " + tempUser.getUserName() + " already exists in database.");
+                return false;
+            }
+        }
+        //Encrypt password before saving in database
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        
+
         repo.save(user);
-        
-    	System.out.println("New User created: " + user.toString());
-    	return true;
+
+        System.out.println("New User created: " + user.toString());
+        return true;
     }
-    
+
+    // get user role
     public String getUserRole(String username) {
-       User user = repo.findByUserName(username).orElseThrow(()
+        User user = repo.findByUserName(username).orElseThrow(()
                 -> new UsernameNotFoundException(username + "not found"));
-       return user.getRole();
+        System.out.println("User role: " + user.getRole());
+        return user.getRole();
     }
-    
-        public List<User> getAllUsers() {
+
+    // ger all users
+    public List<User> getAllUsers() {
         return (List<User>) repo.findAll();
     }
-        
+
+    // get user by id
     public User get(Integer id) {
         Optional<User> result = repo.findById(id);
         return result.get();
-    }   
-    
+    }
+
+    // save user
     public void save(User user) {
         repo.save(user);
-    }    
+    }
+
+    // delete user by id
+    public void delete(Integer id) {
+        repo.deleteById(id);
+    }
+
+    // search users
+    public List<User> getAllUsers(String key) {
+        if (key != null) {
+            return repo.search(key);
+        }
+        return repo.findAll();
+    }
 }

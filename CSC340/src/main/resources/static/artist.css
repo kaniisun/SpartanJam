@@ -87,9 +87,9 @@ div div button:hover {
  }
 
  .artists-form {
-    position: relative;
-    left: 125px;
-    top: 100px;
+    position: absolute;
+    left: 150px;
+    top: 200px;
     color: white;
  }
  
@@ -115,9 +115,9 @@ div div button:hover {
  }
 
  .playlists-form {
-    position: relative;
-    left: 125px;
-    top: 100px;
+    position: absolute;
+    left: 150px;
+    top: 450px;
     color: white;
  }
 
@@ -167,11 +167,14 @@ div div button:hover {
 }
 
 .upload-box {
+    position: relative;
     border: 7px solid rgb(19, 11, 36);
 	border-color: rgb(200,133,27);
 	margin-left: 135px;
 	margin-right: 325px;
 	margin-bottom: 250px;
+    left: 675px;
+    top: 50px;
     padding: 20px;
     background-color: rgb(255,183,27);
     border-radius: 10px;
@@ -179,7 +182,7 @@ div div button:hover {
  
 .upload-form {
     position: relative;
-    left: 60px;
+    left: 50px;
     top: 1px;
     color: white;
 	width: 250px;

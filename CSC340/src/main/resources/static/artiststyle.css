@@ -51,7 +51,7 @@ body{
 }
 
 .bx-search{
-    font-size: 26;
+    font-size: 26px;
     color: rgb(255,183,27);
 }
 
@@ -61,5 +61,4 @@ body{
     left: 300px;
     color: white;
 }
-
 

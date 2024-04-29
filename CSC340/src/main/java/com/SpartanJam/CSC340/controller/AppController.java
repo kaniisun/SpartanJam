@@ -35,13 +35,10 @@ public class AppController {
         		nextPage = "admin/admin";
         		break;
         	case "LISTENER":
-        		nextPage = "redirect:listener/home";
+        		nextPage = "redirect:/listener/home";
         		break;
         	case "ARTIST":
-        		nextPage = "artist/artist";
-        		break;
-        	case "FORUM":
-        		nextPage = "forum/forum";
+        		nextPage = "redirect:/artist/home";
         		break;
         	default:
         		nextPage = "security/login";
