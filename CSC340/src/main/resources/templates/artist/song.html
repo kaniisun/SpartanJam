@@ -16,21 +16,21 @@
     <link rel="stylesheet" href="../artistuploadstyle.css">
 </head>
 <body>
-	<!--Link logo to start page-->
-	<a href="/"><img src="../Spartan.png" class="logo" alt="homepage"></a>
-		
- 	<div class="topright">
- 	    <div style="display: flex;">
- 	    	<div class="dropdown">
-				  <img src="../profileicon1.png" width="50px" height="50px">
-				  <div class="dropdown-content">
-		            <form class="form-inline" th:action="@{/logout}" method="post">                
-		                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign Out</button>
-		            </form>
-				  </div>
-			</div>
-		</div>
-	</div>
+    <!--Link logo to start page-->
+    <a href="/"><img src="../Spartan.png" class="logo" alt="homepage"></a>
+        
+    <div class="topright">
+        <div style="display: flex;">
+            <div class="dropdown">
+                  <img src="../profileicon1.png" width="50px" height="50px">
+                  <div class="dropdown-content">
+                        <form class="form-inline" th:action="@{/logout}" method="post">                
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign Out</button>
+                        </form>
+                  </div>
+            </div>
+        </div>
+    </div>
 
 <div class="grid-container">
     <div class="grid-item3">
@@ -52,6 +52,15 @@
     </div>
     <!-- Uploaded by -->
     <div class="uploader" style="text-align: center;">Uploaded by: <span th:text="${song.uploaderUsername}"></span></div>
+    <!-- Display Share Text -->
+    <div style="text-align: center; margin-top: 20px;">
+    <form>
+        <label for="url">Share this music around:</label>
+        <input type="text" id="url" name="url" th:value="${shareUrl}" readonly>
+    </form>
+    </div>
+
 </div>
+
 </body>
 </html>
