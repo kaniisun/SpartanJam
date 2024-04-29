@@ -14,21 +14,22 @@
         <link rel="stylesheet" href="../listener.css">
     </head>
 
-    <div class="grid-container">
-        <div class="grid-item1">
-
-        </div>
-        <div class="grid-item2">
-            <button type="submit"><a href="/admin/admin">Home</a></button>
-        </div>
-        <div class="grid-item2">
-            <img src="profileicon1.png" width="50px" height="50px">
-        </div>
-    </div>
-
     <body>
         <!--Link logo to start page--> 
-        <a href="login"><img src="../Spartan.png" class="logo" alt="homepage"></a>
+        <a href="/"><img src="../Spartan.png" class="logo" alt="homepage"></a>
+        
+        <div class="topright">
+	 	    <div style="display: flex;">
+	 	    	<div class="dropdown">
+					  <img src="../profileicon1.png" width="50px" height="50px">
+					  <div class="dropdown-content">
+			            <form class="form-inline" th:action="@{/logout}" method="post">                
+			                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign Out</button>
+			            </form>
+					  </div>
+				</div>
+			</div>
+		</div>
 
         <!--Admin Abilities link-->
         <div class="main">

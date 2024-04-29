@@ -15,7 +15,7 @@
 	</head>
 	<body>
 		<!--Link logo to start page-->
-		<a href="/"><img src="../Spartan.png" class="logo" alt="homepage"></a>
+		<a href="/home"><img src="../Spartan.png" class="logo" alt="homepage"></a>
 		
  	    <div class="topright">
 	 	    <div style="display: flex;">
@@ -40,13 +40,13 @@
 			      <li class="nav-item">
 			        <a class="nav-link" href="/listener/home">Spotify Library</a>
 			      </li>
-			      <li class="nav-item active">
+			      <li class="nav-item">
 			        <a class="nav-link" href="/listener/favorites">Spotify Favorites</a>
 			      </li>
 			      <li class="nav-item">
 			        <a class="nav-link" href="/listener/localLibrary">Local Library</a>
 			      </li>
-			      <li class="nav-item">
+			      <li class="nav-item active">
 			        <a class="nav-link" href="/listener/localFavorites">Local Favorites</a>
 			      </li>
 			    </ul>
@@ -54,33 +54,30 @@
 			</nav>
 			
 			<ul class="list-group list-group-flush">
-				<div th:each="listener: ${listeners}">
-				    <form class="form-inline my-2 my-lg-0">
-				    	<a style="font-weight:900;" class="list-group-item" th:text="${listener.songName} + ' by ' + ${listener.artistName} + ' (' + ${listener.albumName} + ')'"></a>
-				    	<a style="position:absolute;right:15px;" class="btn btn-primary" th:href="${listener.spotifyUrl}" onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,top=300,left=1300,width=300,height=500'); return false;">
-				    	    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-play" viewBox="0 0 16 16">
-		  						<path d="M10.804 8 5 4.633v6.734zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696z"/>
-							</svg>
-				    	</a>
-				    	&nbsp;
-				    	<span th:if="${listener.rating == 'P'}" th:text="${listener.rating}"></span>
-				    	<span th:switch="${listener.rating}">
+				<div th:each="localListener: ${localListeners}">
+					<div class="form-inline my-2 my-lg-0">
+						<a style="font-weight:900;" class="list-group-item" th:text="${localListener.title} + ' by ' + ${localListener.artistName}"></a>
+						<audio style="position:absolute;right:50px;" controls>
+							<source th:src="${localListener.audioFilePath}" type="audio/mpeg"></source>
+						</audio>
+						
+						<span th:if="${localListener.rating == 'P'}" th:text="${localListener.rating}"></span>
+				    	<span th:switch="${localListener.rating}">
 				    		<div th:case="'N'">
-				    			<a th:href="@{/listener/decreaseRating/listenerId={id}(id=${listener.id})}" class="fa fa-thumbs-down" style="font-size:24px;color:red;"></a>
-			    				<a th:href="@{/listener/increaseRating/listenerId={id}(id=${listener.id})}" class="fa fa-thumbs-up" style="font-size:24px;color:grey;"></a>
+				    			<a th:href="@{/listener/decreaseLocalListenerRating/listenerId={id}(id=${localListener.id})}" class="fa fa-thumbs-down" style="font-size:24px;color:red;"></a>
+			    				<a th:href="@{/listener/increaseLocalListenerRating/listenerId={id}(id=${localListener.id})}" class="fa fa-thumbs-up" style="font-size:24px;color:grey;"></a>
 				    		</div>
 				    		<div th:case="'P'">
-								<a th:href="@{/listener/decreaseRating/listenerId={id}(id=${listener.id})}" class="fa fa-thumbs-down" style="font-size:24px;color:grey;"></a>
-				    			<a th:href="@{/listener/increaseRating/listenerId={id}(id=${listener.id})}" class="fa fa-thumbs-up" style="font-size:24px;color:green;"></a>
+								<a th:href="@{/listener/decreaseLocalListenerRating/listenerId={id}(id=${localListener.id})}" class="fa fa-thumbs-down" style="font-size:24px;color:grey;"></a>
+				    			<a th:href="@{/listener/increaseLocalListenerRating/listenerId={id}(id=${localListener.id})}" class="fa fa-thumbs-up" style="font-size:24px;color:green;"></a>
 							</div>
 				    		<div th:case="*">
-				    			<a th:href="@{/listener/decreaseRating/listenerId={id}(id=${listener.id})}" class="fa fa-thumbs-down" style="font-size:24px;color:grey;"></a>
-			    				<a th:href="@{/listener/increaseRating/listenerId={id}(id=${listener.id})}" class="fa fa-thumbs-up" style="font-size:24px;color:grey;"></a>
+				    			<a th:href="@{/listener/decreaseLocalListenerRating/listenerId={id}(id=${localListener.id})}" class="fa fa-thumbs-down" style="font-size:24px;color:grey;"></a>
+			    				<a th:href="@{/listener/increaseLocalListenerRating/listenerId={id}(id=${localListener.id})}" class="fa fa-thumbs-up" style="font-size:24px;color:grey;"></a>
 				    		</div>
 				    	</span>
-	 			    	<a style="position:absolute;right:75px;" class="btn btn-danger" th:href="@{/listener/deleteFavSong/listenerId={id}(id=${listener.id})}">X
-				    	</a>
-		    		</form>
+	 			    	<a style="position:absolute;right:5px;" class="btn btn-danger" th:href="@{/listener/deleteLocalFavSong/listenerId={id}(id=${localListener.id})}">X</a>
+					</div>
 				</div>
 			</ul>
 		</div>
