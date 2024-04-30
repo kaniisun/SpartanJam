@@ -13,6 +13,5 @@
 10. Logout and create an account for Admin role and login.
 11. Once logged in, go to the Approve Songs feature to listen, approve or deny the songs uploaded by the artist role.
 12. Logout and log back into the listener account to see the approved songs appear in the local playlist. Logout.
-13. (Artist share)
-14. Log back in to Admin account and go to Edit Users feature. From there you can edit user account details and delete users. Logout.
-15. This will take you through all of our use cases.
+13. Log back in to Admin account and go to Edit Users feature. From there you can edit user account details and delete users. Logout.
+14. This will take you through all of our use cases.
