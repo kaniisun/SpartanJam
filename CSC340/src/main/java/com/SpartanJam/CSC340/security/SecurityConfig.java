@@ -44,11 +44,11 @@ public class SecurityConfig {
                 .requestMatchers("/create-new-user/**").permitAll()
                 .requestMatchers("/").permitAll()
                 .requestMatchers("/home").permitAll()
-                .requestMatchers("/**").permitAll() //disable security
-//                .requestMatchers("/listener/**").hasAnyAuthority("LISTENER","ADMIN")
-//                .requestMatchers("/artist/**").hasAnyAuthority("ARTIST","ADMIN")
-//                .requestMatchers("/song/**").hasAnyAuthority("ARTIST","ADMIN")
-//                .requestMatchers("/admin/**").hasAuthority("ADMIN")
+//                .requestMatchers("/**").permitAll() //disable security
+                .requestMatchers("/listener/**").hasAnyAuthority("LISTENER","ADMIN")
+                .requestMatchers("/artist/**").hasAnyAuthority("ARTIST","ADMIN")
+                .requestMatchers("/song/**").hasAnyAuthority("ARTIST","ADMIN")
+                .requestMatchers("/admin/**").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 )
                 .formLogin((form) -> form
