@@ -7,7 +7,7 @@
 4. Once you've added the database, clean and build the project and then run.
 5. When you run, open your localhost:8080, it will take you to the login page.
 6. Go to create an account and create an account with the "Listener" role. This is the user we want you to start with.
-7. Once you create an account, you can login and view the Listener page, add and listen to music from Spotify.
+7. Once you create an account, you can login and view the Listener page, add and listen to music from Spotify(need Spotify log in account) also uploded by artist.
 8. Logout and create an account for the Artist role and login.
 9. Once logged in, go to the Upload feature and upload a .mp3 file.
 10. Logout and create an account for Admin role and login.
