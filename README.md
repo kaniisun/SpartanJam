@@ -9,7 +9,7 @@
 6. Go to create an account and create an account with the "Listener" role. This is the user we want you to start with.
 7. Once you create an account, you can login and view the Listener page, add and listen to music from Spotify.
 8. Logout and create an account for the Artist role and login.
-9. Once logged in, go to the Upload feature a upload a .mp3 file.
+9. Once logged in, go to the Upload feature and upload a .mp3 file.
 10. Logout and create an account for Admin role and login.
 11. Once logged in, go to the Approve Songs feature to listen, approve or deny the songs uploaded by the artist role.
 12. Logout and log back into the listener account to see the approved songs appear in the local playlist. Logout.
