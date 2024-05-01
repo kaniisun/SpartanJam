@@ -1,5 +1,8 @@
 # Spartan Jam
 
+# Final Documentation:
+[SpartanJam] (https://github.com/kaniisun/SpartanJam/blob/main/SpartanJam.pdf)
+
 # How to Run the Program:
 1. Download the project from the main branch.
 2. Open the project in Netbeans.
