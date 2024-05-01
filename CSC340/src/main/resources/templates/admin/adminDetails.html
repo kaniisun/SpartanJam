@@ -23,14 +23,14 @@
         <div class="col-md-6 bg">
             <h1 style="text-align:center; color: black;">Update User Info</h1>
             <form action="/admin/editUser/update" method="post">
-                <tbody>
-                <th:block th:each="user : ${listUsers}">
-                    <tr>
                 <input type="hidden" name="id" th:value="${user.id}" /> 
                 <div class="form-group text-white">
-                    <!-- have user details appear when clicking on id number -->
-                    <label for="userName">Username:</label><td th:text="${user.id}></td>
+                    <label for="userName">Username:</label>
                     <input type="text" class="form-control" name="userName" id="userName" placeholder="Enter username" th:value="${user.userName}" required>
+                </div>
+                <div class="form-group text-white">
+                    <label for="password">Password:</label>
+                    <input type="text" class="form-control" name="password" id="password" placeholder="Enter password" th:value="${user.password}" required>
                 </div>
                 <div class="form-group text-white">
                     <label for="email">Email:</label>
@@ -42,9 +42,6 @@
                 </div>            
                 <button type="submit" class="btn btn-primary">Submit</button>
                 <a href="/admin/edit" class="btn btn-secondary">Cancel</a>
-                </tr>
-                </th:block>
-                </tbody>
             </form>
         </div>
     </div>
